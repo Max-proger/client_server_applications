@@ -1,0 +1,25 @@
+{
+    "orders": [
+        {
+            "item": "xerox",
+            "quantity": "100",
+            "price": "50000",
+            "buyer": "Ромашка",
+            "date": "1.02.2022"
+        },
+        {
+            "item": "notebook",
+            "quantity": "20",
+            "price": "100000",
+            "buyer": "Max",
+            "date": "14.02.2022"
+        },
+        {
+            "item": "компьютер",
+            "quantity": "5",
+            "price": "140000",
+            "buyer": "IMB",
+            "date": "2.2.2022"
+        }
+    ]
+}
