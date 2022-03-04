@@ -1,5 +1,6 @@
 import csv
 import re
+import chardet
 
 
 def get_data():
@@ -11,7 +12,10 @@ def get_data():
     main_data = [["Изготовитель системы", "Название ОС", "Код продукта", "Тип системы"]]
 
     for file in txt_list:
-        datafile = open(file)
+        with open(file, "rb") as f_rb:
+            d_obj = f_rb.read()
+            enc = chardet.detect(d_obj)
+            datafile = open(file, encoding=enc["encoding"])
 
         for row in datafile:
             row = row.rstrip()
