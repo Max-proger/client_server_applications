@@ -1,0 +1,9 @@
+cnt: 100000
+currency:
+  EUR: 1€
+  RUR: 1₽
+  USD: 1$
+items:
+- xerox
+- notebook
+- office

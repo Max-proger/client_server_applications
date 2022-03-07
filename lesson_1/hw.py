@@ -87,13 +87,13 @@ for url in urls.split(", "):
 """
 
 txt = "сетевое программирование, сокет, декоратор"
-with open("txt.txt", "w") as f:
+with open("lesson_1/txt.txt", "w") as f:
     for word in txt.split(", "):
         f.write(f"{word},")
 f.close()
 
 detector = UniversalDetector()
-with open("txt.txt", "rb") as f:
+with open("lesson_1/txt.txt", "rb") as f:
     for line in f:
         detector.feed(line)
         if detector.done:
