@@ -1,6 +1,9 @@
 import json
+import os
+import sys
 
-from lesson_3.common.variables import ENCODING, MAX_PACKAGE_LENGTH
+sys.path.append(os.path.join(os.getcwd(), ".."))
+from common.variables import ENCODING, MAX_PACKAGE_LENGTH
 
 
 def get_message(client):
