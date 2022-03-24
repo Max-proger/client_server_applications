@@ -1,5 +1,6 @@
 import csv
 import re
+
 import chardet
 
 
