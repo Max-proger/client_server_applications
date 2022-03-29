@@ -1,6 +1,7 @@
 import json
 import socket
 import sys
+import argparse
 
 from common.utils import get_message, send_message
 from common.variables import (
@@ -15,23 +16,31 @@ from common.variables import (
     TIME,
     USER,
 )
+from decor import log
 
 
+@log
 def process_client_message(message):
-
     if (
-        ACTION in message
-        and message[ACTION] == PRESENCE
-        and TIME in message
-        and USER in message
-        and message[USER][ACCOUNT_NAME] == "Guest"
+            ACTION in message
+            and message[ACTION] == PRESENCE
+            and TIME in message
+            and USER in message
+            and message[USER][ACCOUNT_NAME] == "Guest"
     ):
         return {RESPONSE: 200}
     return {RESPONDEFAULT_IP_ADDRESSSE: 400, ERROR: "Bad Request"}
 
 
-def main():
+@log
+def create_arg_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-p', default=DEFAULT_PORT, type=int, nargs='?')
+    parser.add_argument('-a', default='', nargs='?')
+    return parser
 
+
+def main():
     try:
         if "-p" in sys.argv:
             listen_port = int(sys.argv[sys.argv.index("-p") + 1])
