@@ -4,8 +4,10 @@ import sys
 
 sys.path.append(os.path.join(os.getcwd(), ".."))
 from common.variables import ENCODING, MAX_PACKAGE_LENGTH
+from decor import log
 
 
+@log
 def get_message(client):
     encoded_response = client.recv(MAX_PACKAGE_LENGTH)
     if isinstance(encoded_response, bytes):
@@ -17,6 +19,7 @@ def get_message(client):
     raise ValueError
 
 
+@log
 def send_message(sock, message):
     if not isinstance(message, dict):
         raise TypeError

@@ -2,6 +2,7 @@ import json
 import socket
 import sys
 import time
+import argparse
 
 from common.utils import get_message, send_message
 from common.variables import (
@@ -15,10 +16,11 @@ from common.variables import (
     TIME,
     USER,
 )
+from decor import log
 
 
+@log
 def create_presence(account_name="Guest"):
-
     out = {
         ACTION: PRESENCE,
         TIME: time.time(),
@@ -27,8 +29,8 @@ def create_presence(account_name="Guest"):
     return out
 
 
+@log
 def process_ans(message):
-
     if RESPONSE in message:
         if message[RESPONSE] == 200:
             return "200 : OK"
@@ -36,8 +38,15 @@ def process_ans(message):
     raise ValueError
 
 
-def main():
+@log
+def create_arg_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('addr', default=DEFAULT_IP_ADDRESS, nargs='?')
+    parser.add_argument('port', default=DEFAULT_PORT, type=int, nargs='?')
+    return parser
 
+
+def main():
     try:
         server_address = sys.argv[1]
         server_port = int(sys.argv[2])
